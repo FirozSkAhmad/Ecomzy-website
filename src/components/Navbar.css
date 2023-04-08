@@ -38,11 +38,14 @@ nav {
     justify-content: center;
     align-items: center;
     color: white;
+    text-align: center;
 }
 
 .count>p {
-    font-size: small;
+    font-size:smaller;
 }
+
+
 
 .active>p {
     color: green;
