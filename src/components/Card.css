@@ -26,6 +26,11 @@
     font-size: large;
 }
 
+#description{
+    font-weight: 600;
+    color: rgb(96, 96, 96);
+}
+
 #image {
     width: 142px;
     height: 180px;

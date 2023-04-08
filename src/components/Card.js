@@ -18,7 +18,7 @@ export const Card = ({ data }) => {
             <div id='heading'>
                 <p>{data.title.slice(0, 14)}...</p>
             </div>
-            <div>
+            <div id='description'>
                 <p>{data.description.slice(0, 34)}...</p>
             </div>
             <div id='image'>
