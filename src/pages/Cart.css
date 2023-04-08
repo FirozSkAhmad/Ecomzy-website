@@ -94,4 +94,7 @@ h1 {
 
 .emptyCart button:hover {
     cursor: pointer;
+    background-color: white;
+    color: rgb(1, 169, 1);
+    border: 1px solid rgb(1, 169, 1);
 }
