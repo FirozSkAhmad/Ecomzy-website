@@ -1,0 +1,54 @@
+nav {
+    background-color: black;
+    height: 60px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    z-index: 1;
+}
+
+
+.linkContainer {
+    width: 100px;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+}
+
+.linkContainer p {
+    color: white;
+    font-size: large;
+}
+
+
+.linkContainer .count {
+    width: 15px;
+    height: 15px;
+    background-color: green;
+    border-radius: 50%;
+    position: absolute;
+    right: 3px;
+    top: 13px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.count>p {
+    font-size: small;
+}
+
+.active>p {
+    color: green;
+}
+
+#cartIcon {
+    color: white;
+    transform: scale(1.4, 1.4);
+}
