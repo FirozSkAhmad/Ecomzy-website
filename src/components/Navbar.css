@@ -10,9 +10,12 @@ nav {
     z-index: 1;
 }
 
+p:hover{
+    cursor: pointer;
+}
 
 .linkContainer {
-    width: 100px;
+    width: 180px;
     height: 100%;
     display: flex;
     justify-content: space-around;
@@ -20,7 +23,29 @@ nav {
     position: relative;
 }
 
-.linkContainer p {
+.linkContainer p ,.slinkContainer p{
+    color: white;
+    font-size: large;
+}
+
+.slinkContainer{
+    width: 300px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.rLinkContainer{
+    width: 130px;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+}
+
+.rLinkContainer p {
     color: white;
     font-size: large;
 }
@@ -32,7 +57,7 @@ nav {
     background-color: green;
     border-radius: 50%;
     position: absolute;
-    right: 3px;
+    right: 80px;
     top: 13px;
     display: flex;
     justify-content: center;
