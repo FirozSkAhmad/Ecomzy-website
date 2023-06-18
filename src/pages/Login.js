@@ -67,7 +67,7 @@ export const Login = () => {
 
             if (Object.keys(errs).length === 0) {
                 const options = {
-                    url: "http://localhost:4000/loginUser",
+                    url: "https://ecomzy-backend.onrender.com/loginUser",
                     method: "POST",
                     data: formData
                 }
@@ -80,7 +80,7 @@ export const Login = () => {
                 localStorage.setItem("token", token);
                 localStorage.setItem("userId", tokenData.userId);
                 localStorage.setItem("name", tokenData.name);
-                
+
                 dispatch(set(tokenData.cart))
                 navigate("/")
                 setFormData(initialData)

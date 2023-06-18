@@ -18,7 +18,7 @@ export const Navbar = () => {
         const formData = { userId, cartItems }
 
         const options = {
-            url: "http://localhost:4000/updateCart",
+            url: "https://ecomzy-backend.onrender.com/updateCart",
             method: "PUT",
             data: formData
         }

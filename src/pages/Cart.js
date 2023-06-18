@@ -32,7 +32,7 @@ export const Cart = () => {
             const formData = { userId, orderItems }
 
             const options = {
-                url: "http://localhost:4000/updateOrders",
+                url: "https://ecomzy-backend.onrender.com/updateOrders",
                 method: "PUT",
                 data: formData
             }

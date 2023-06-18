@@ -70,7 +70,7 @@ export const SignUp = () => {
 
             if (Object.keys(errs).length === 0) {
                 const options = {
-                    url: "http://localhost:4000/createUser",
+                    url: "https://ecomzy-backend.onrender.com/createUser",
                     method: "POST",
                     data: formData
                 }
