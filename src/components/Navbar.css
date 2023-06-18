@@ -1,16 +1,17 @@
 nav {
     background-color: black;
     height: 60px;
-    width: 100%;
     display: flex;
     justify-content: space-around;
     align-items: center;
     position: fixed;
     top: 0;
-    z-index: 1;
+    right: 0;
+    left: 0;
+    z-index: 100;
 }
 
-p:hover{
+p:hover {
     cursor: pointer;
 }
 
@@ -23,12 +24,13 @@ p:hover{
     position: relative;
 }
 
-.linkContainer p ,.slinkContainer p{
+.linkContainer p,
+.slinkContainer p {
     color: white;
     font-size: large;
 }
 
-.slinkContainer{
+.slinkContainer {
     width: 300px;
     height: 100%;
     display: flex;
@@ -36,7 +38,7 @@ p:hover{
     justify-content: space-between;
 }
 
-.rLinkContainer{
+.rLinkContainer {
     width: 130px;
     height: 100%;
     display: flex;
@@ -67,7 +69,7 @@ p:hover{
 }
 
 .count>p {
-    font-size:smaller;
+    font-size: smaller;
 }
 
 

@@ -3,16 +3,16 @@ import { AiTwotoneDelete } from "react-icons/ai"
 import { remove } from "../redux/slices/Cartslice"
 import { useDispatch } from "react-redux"
 import "./CartCard.css"
-// import SlideButton from 'react-slide-button';
-
 
 
 export const CartCard = ({ data }) => {
+
     const dispatch = useDispatch()
+    
     return (
         <div className='cartCard'>
             <div id='cartCardImg'>
-                <img src={data.image} alt="itemImg" width="180px" height="200px" />
+                <img className='img' src={data.image} alt="itemImg" width="180px" height="200px" />
             </div>
             <div id='cartCardDec'>
                 <h2>{data.title}</h2>
@@ -22,7 +22,6 @@ export const CartCard = ({ data }) => {
                     <div id='icon'>
                         <AiTwotoneDelete onClick={() => dispatch(remove(data))} />
                     </div>
-                    {/* <SlideButton onSlideDone={() => dispatch(remove(data))}/>; */}
                 </div>
             </div>
         </div>

@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router-dom'
 import jwt_decode from 'jwt-decode'
 import { isValid, isValidEmail } from '../validations/validators'
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai"
+import { useDispatch } from 'react-redux'
+import { set } from '../redux/slices/Cartslice'
 
 export const Login = () => {
 
@@ -37,6 +39,8 @@ export const Login = () => {
         }))
     }
 
+    const dispatch = useDispatch()
+
     async function submitHandler(event) {
         try {
             event.preventDefault()
@@ -68,19 +72,17 @@ export const Login = () => {
                     data: formData
                 }
                 const doc = await axios(options)
-                console.log(doc)
+
                 const token = doc.data.token
+
                 const tokenData = jwt_decode(token)
+
                 localStorage.setItem("token", token);
                 localStorage.setItem("userId", tokenData.userId);
                 localStorage.setItem("name", tokenData.name);
-                localStorage.setItem("userType", tokenData.userType);
-                if (tokenData.userType === "buyer") {
-                    navigate("/")
-                }
-                else {
-                    navigate("/seller")
-                }
+                
+                dispatch(set(tokenData.cart))
+                navigate("/")
                 setFormData(initialData)
             }
         }
@@ -92,32 +94,36 @@ export const Login = () => {
     }
 
     return (
-        <div className='logincontainer'>
-            <form className="container" onSubmit={submitHandler}>
-                <label>
-                    <p>Email:</p>
-                    <input type='email' name='email' value={formData.email} onChange={formHandler} />
-                    <div className='errBlock'>
-                        {(errors.email) ? <p> {errors.email}</p> : null}
+        <div className='mainCon'>
+            <div className='logincontainer'>
+                <form className="container" onSubmit={submitHandler}>
+                    <label>
+                        <p>Email:</p>
+                        <input type='email' name='email' value={formData.email} onChange={formHandler} />
+                        <div className='errBlock'>
+                            {(errors.email) ? <p> {errors.email}</p> : null}
+                        </div>
+                    </label>
+                    <label className='passwordBlock'>
+                        <p>password:</p>
+                        <div className='passwordInputBlock'>
+                            <input type={toggle ? "password" : "text"} name='password' value={formData.password} onChange={formHandler} />
+                            <div id='icon'>
+                                {toggle ? <AiFillEye onClick={() => setToggel(!toggle)} /> : <AiFillEyeInvisible onClick={() => setToggel(!toggle)} />}
+                            </div>
+                        </div>
+                        <div className='errBlock'>
+                            {(errors.password) ? <p> {errors.password}</p> : null}
+                        </div>
+                    </label>
+                    <div className='serErrBlock'>
+                        {(serverErrors.message) ? <p> {serverErrors.message}</p> : null}
                     </div>
-                </label>
-                <label className='passwordBlock'>
-                    <p>password:</p>
-                    <input type={toggle ? "password" : "text"} name='password' value={formData.password} onChange={formHandler} />
-                    <div id='icon'>
-                        {toggle ? <AiFillEye onClick={() => setToggel(!toggle)} /> : <AiFillEyeInvisible onClick={() => setToggel(!toggle)} />}
-                    </div>
-                    <div className='errBlock'>
-                        {(errors.password) ? <p> {errors.password}</p> : null}
-                    </div>
-                </label>
-                <div className='serErrBlock'>
-                    {(serverErrors.message) ? <p> {serverErrors.message}</p> : <br />}
-                </div>
-                <br />
-                <button>Login</button>
-            </form>
+                    <button>Login</button>
+                </form>
+            </div>
         </div>
+
     )
 }
 

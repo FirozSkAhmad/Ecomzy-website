@@ -9,7 +9,7 @@ import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai"
 
 export const SignUp = () => {
     const [formData, setFormData] = useState({
-        fname: "", lname: "", email: "", password: "", usertype: "buyer"
+        fname: "", lname: "", email: "", password: ""
     })
 
     const [toggle, setToggel] = useState(true)
@@ -87,53 +87,49 @@ export const SignUp = () => {
     }
 
     return (
-        <div className='signupcontainer'>
-            <form className="container" onSubmit={submitHandler}>
-                <label>
-                    <p>First Name:</p>
-                    <input type='text' name='fname' value={formData.fname} onChange={fromHandler} />
-                    <div className='errBlock'>
-                        {(errors.fname) ? <p> {errors.fname}</p> : null}
+        <div className='mainCon'>
+            <div className='signupcontainer'>
+                <form className="container" onSubmit={submitHandler}>
+                    <label>
+                        <p>First Name:</p>
+                        <input type='text' name='fname' value={formData.fname} onChange={fromHandler} />
+                        <div className='errBlock'>
+                            {(errors.fname) ? <p> {errors.fname}</p> : null}
+                        </div>
+                    </label>
+                    <label>
+                        <p>Last Name:</p>
+                        <input type='text' name='lname' value={formData.lname} onChange={fromHandler} />
+                        <div className='errBlock'>
+                            {(errors.lname) ? <p> {errors.lname}</p> : null}
+                        </div>
+                    </label>
+                    <label>
+                        <p>Email:</p>
+                        <input type='email' name='email' value={formData.email} onChange={fromHandler} />
+                        <div className='errBlock'>
+                            {(errors.email) ? <p> {errors.email}</p> : null}
+                        </div>
+                    </label>
+                    <label id='passwordBlock'>
+                        <p>password:</p>
+                        <input type={toggle ? "password" : "text"} name='password' value={formData.password} onChange={fromHandler} />
+                        <div id='icon'>
+                            {toggle ? <AiFillEye onClick={() => setToggel(!toggle)} /> : <AiFillEyeInvisible onClick={() => setToggel(!toggle)} />}
+                        </div>
+                        <div className='errBlock'>
+                            {(errors.password) ? <p> {errors.password}</p> : null}
+                        </div>
+                    </label>
+                    <br />
+                    <div className='serErrBlock'>
+                        {(serverErrors.message) ? <p> {serverErrors.message}</p> : <br />}
                     </div>
-                </label>
-                <label>
-                    <p>Last Name:</p>
-                    <input type='text' name='lname' value={formData.lname} onChange={fromHandler} />
-                    <div className='errBlock'>
-                        {(errors.lname) ? <p> {errors.lname}</p> : null}
-                    </div>
-                </label>
-                <label>
-                    <p>Email:</p>
-                    <input type='email' name='email' value={formData.email} onChange={fromHandler} />
-                    <div className='errBlock'>
-                        {(errors.email) ? <p> {errors.email}</p> : null}
-                    </div>
-                </label>
-                <label id='passwordBlock'>
-                    <p>password:</p>
-                    <input type={toggle ? "password" : "text"} name='password' value={formData.password} onChange={fromHandler} />
-                    <div id='icon'>
-                        {toggle ? <AiFillEye onClick={() => setToggel(!toggle)} /> : <AiFillEyeInvisible onClick={() => setToggel(!toggle)} />}
-                    </div>
-                    <div className='errBlock'>
-                        {(errors.password) ? <p> {errors.password}</p> : null}
-                    </div>
-                </label>
-                <label>
-                    <p>User Type:</p>
-                    <select name='usertype' value={formData.usertype} onChange={fromHandler}>
-                        <option value="buyer">Buyer</option>
-                        <option value="seller">Seller</option>
-                    </select>
-                </label>
-                <br />
-                <div className='serErrBlock'>
-                    {(serverErrors.message) ? <p> {serverErrors.message}</p> : <br />}
-                </div>
-                <button>Sign Up</button>
-            </form>
+                    <button>Sign Up</button>
+                </form>
+            </div>
         </div>
+
     )
 }
 

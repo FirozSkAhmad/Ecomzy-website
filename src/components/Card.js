@@ -4,10 +4,11 @@ import { add, remove } from "../redux/slices/Cartslice"
 import "./Card.css"
 
 export const Card = ({ data }) => {
-    const { cart } = useSelector((state) => state)
+    const cartItems = useSelector((state) => state.cart.items)
+
     let itemIds = []
-    if (cart.value.length > 0) {
-        cart.value.forEach((itemData) => {
+    if (cartItems.length > 0) {
+        cartItems.forEach((itemData) => {
             return itemIds.push(itemData.id)
         })
     }
